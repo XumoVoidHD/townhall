@@ -38,5 +38,3 @@ A simple Twitter-like web app built with Django, where users can create, view, e
 
 ## Contributing 🤝  
 Feel free to fork and improve the project!  
-
----
