@@ -21,6 +21,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          {% comment %} 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -43,21 +44,25 @@
               <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <a href ="{% url 'tweet_list' %}" class="btn btn-primary mx-2">Tweet Home</a>
-            {% if user.is_authenticated %}
-            <form method="post" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <button class="btn btn-danger" type="submit">Logout</button>
-            </form>
-            {% else %}
-            <a href="{% url 'register' %}" class="btn btn-primary mx-2">Register</a>
-            <a href="{% url 'login' %}" class="btn btn-success mx-2">Login</a>
-            {% endif %}
+            </ul> 
+            {% endcomment %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="ms-auto d-flex align-items-center">
+                  <form class="d-flex me-2" role="search">
+                      <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                  <a href="{% url 'tweet_list' %}" class="btn btn-primary mx-2">Tweet Home</a>
+                  {% if user.is_authenticated %}
+                      <form method="post" action="{% url 'logout' %}">
+                          {% csrf_token %}
+                          <button class="btn btn-danger" type="submit">Logout</button>
+                      </form>
+                  {% else %}
+                      <a href="{% url 'register' %}" class="btn btn-primary mx-2">Register</a>
+                      <a href="{% url 'login' %}" class="btn btn-success mx-2">Login</a>
+                  {% endif %}
+              </div>
           </div>
         </div>
       </nav>
